@@ -1,0 +1,734 @@
+1. Is it Raining? (First version):
+Question: Write a program such that Python will ask you if it is raining or not. If your answer is "yes", Python will say "Carry an umbrella". If you type anything else, Python will say "Bye".
+Answer:
+
+
+
+
+answer = input("Is it raining? (yes/no): ")
+if answer == "yes":
+    print("Carry an umbrella")
+else:
+    print("Bye")
+
+
+2. Is it Raining? (Second version):
+Question: Write a program such that Python will ask you if it is raining or not. If your answer is "yes", Python will say "Carry an umbrella". If you say "no", Python will say "No need to carry an umbrella". If you type anything else, Python will say "Bye".
+Answer
+
+
+
+
+
+answer = input("Is it raining? (yes/no): ")
+if answer == "yes":
+    print("Carry an umbrella")
+elif answer == "no":
+    print("No need to carry an umbrella")
+else:
+    print("Bye")
+
+
+
+3. Letter Grade:
+Question: Write a Python program to calculate a student’s letter grade based on their numeric score using the following scale: A (90–100), B (80–89), C (70–79), D (60–69), and F (below 60). Additionally, provide a comment for each grade: "Excellent" for A, "Good" for B, "Average" for C, "Needs Improvement" for D, and "Failing" for F.
+Answer
+
+
+
+
+
+score = int(input("Enter score: "))
+if score >= 90:
+    print("Grade: A - Excellent")
+elif score >= 80:
+    print("Grade: B - Good")
+elif score >= 70:
+    print("Grade: C - Average")
+elif score >= 60:
+    print("Grade: D - Needs Improvement")
+else:
+    print("Grade: F - Failing")
+
+
+4. Even or Odd:
+Question: Write a program that takes an integer input from the user and tells the user whether the number is even or odd.
+Answer
+
+
+
+
+
+number = int(input("Enter a number: "))
+if number % 2 == 0:
+    print("Even")
+else:
+    print("Odd")
+
+
+
+5. Leap Year:
+Question: Write a program that takes a year as input and determines whether it is a leap year or not.
+Answer
+
+
+
+
+
+year = int(input("Enter a year: "))
+if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+    print("Leap year")
+else:
+    print("Not a leap year")
+
+
+
+6. Prime Check:
+Question: Write a program that takes an integer input from the user and prints whether it is prime or not.
+Answer
+
+
+
+
+
+number = int(input("Enter a number: "))
+is_prime = True
+if number <= 1:
+    is_prime = False
+for i in range(2, int(number ** 0.5) + 1):
+    if number % i == 0:
+        is_prime = False
+        break
+if is_prime:
+    print("Prime")
+else:
+    print("Not prime")
+
+
+
+7. Sum of Primes Below a Number:
+Question: Write a program to compute the sum of all prime numbers below a user input number, e.g., Sum of all prime numbers less than 20 is 77.
+Answer
+
+
+
+
+
+limit = int(input("Enter a number: "))
+sum_of_primes = 0
+for num in range(2, limit):
+    is_prime = True
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            is_prime = False
+            break
+    if is_prime:
+        sum_of_primes += num
+print("Sum of primes:", sum_of_primes)
+
+
+8. Positive Number with While Loop:
+Question: Write a program that takes an integer input from the user. Use a while loop to continuously prompt for input until the user enters a positive number. If the final number is even, multiply it by 2 and if it is odd, square it. Display the results at the end.
+Answer:
+
+
+
+
+number = -1
+while number <= 0:
+    number = int(input("Enter a positive number: "))
+if number % 2 == 0:
+    result = number * 2
+else:
+    result = number ** 2
+print("Result:", result)
+
+
+
+
+9. Remainder when Divided by 5 (Match Case):
+Question: Write a program to find the remainder when a user input number is divided by 5 using match-case. If the user inputs a non-integer, Python should say "Invalid input" and stop.
+Answer:
+
+
+
+
+try:
+    number = int(input("Enter a number: "))
+    match number % 5:
+        case 0:
+            print("Remainder is 0")
+        case 1:
+            print("Remainder is 1")
+        case 2:
+            print("Remainder is 2")
+        case 3:
+            print("Remainder is 3")
+        case 4:
+            print("Remainder is 4")
+except ValueError:
+    print("Invalid input")
+
+
+
+
+10. Substrings of a String:
+Question: Write a program that takes a string as input and prints out all possible sub-strings of the string using loops, e.g., if the input is "abc", the output should be "a", "ab", "abc", "b", "bc", "c".
+Answer
+
+
+
+
+
+string = input("Enter a string: ")
+for i in range(len(string)):
+    for j in range(i + 1, len(string) + 1):
+        print(string[i:j])
+
+
+
+
+11. Simple Calculator:
+Question: Write a program that functions as a simple calculator. It should continuously accept a pair of numbers and an operator (+, -, *, /) from the user and print the result. If the user types "exit", the program quits.
+Answer:
+
+
+
+
+while True:
+    user_input = input("Enter two numbers and an operator (+, -, *, /) or 'exit' to quit: ")
+    if user_input.lower() == "exit":
+        break
+    num1, operator, num2 = user_input.split()
+    num1 = float(num1)
+    num2 = float(num2)
+    if operator == "+":
+        print(num1 + num2)
+    elif operator == "-":
+        print(num1 - num2)
+    elif operator == "*":
+        print(num1 * num2)
+    elif operator == "/":
+        if num2 != 0:
+            print(num1 / num2)
+        else:
+            print("Cannot divide by zero")
+
+
+
+
+12. Mean, Median, Mode:
+Question: Write a program to find out the mean, median, and mode of the list [1, 2, 3, 2, 3, 4, 4, 4, 5, 4, 5, 6].
+Answer
+
+
+
+
+
+from statistics import mean, median, mode
+numbers = [1, 2, 3, 2, 3, 4, 4, 4, 5, 4, 5, 6]
+print("Mean:", mean(numbers))
+print("Median:", median(numbers))
+print("Mode:", mode(numbers))
+
+
+
+
+
+13. Chess Board Position Color:
+Question: Positions on a chess board are identified by a letter and a number. Write a program that reads a position from the user and identify the proper color of the respective box.
+Answer
+
+
+
+
+
+position = input("Enter position (e.g., a1): ")
+column = position[0]
+row = int(position[1])
+if (ord(column) - ord('a') + row) % 2 == 0:
+    print("Black")
+else:
+    print("White")
+
+
+
+
+    14. Hotel Booking Cost:
+Question: Write a Python program that calculates the final cost of a hotel booking based on the room type (Standard: $100/night, Deluxe: $150/night, Suite: $250/night), the length of stay (10% discount for >3 nights, 20% discount for >7 nights), the season (20% increase during peak season, 15% decrease during the off-season), and whether the customer is a loyalty member (5% additional discount).
+Answer:
+python
+Copy code
+room_type = input("Enter room type (Standard, Deluxe, Suite): ")
+nights = int(input("Enter number of nights: "))
+season = input("Enter season (peak, off): ")
+loyalty = input("Are you a loyalty member? (yes/no): ")
+
+if room_type == "Standard":
+    base_price = 100
+elif room_type == "Deluxe":
+    base_price = 150
+elif room_type == "Suite":
+    base_price = 250
+
+cost = base_price * nights
+
+if nights > 7:
+    cost *= 0.8
+elif nights > 3:
+    cost *= 0.9
+
+if season == "peak":
+    cost *= 1.2
+elif season == "off":
+    cost *= 0.85
+
+if loyalty == "yes":
+    cost *= 0.95
+
+print("Final cost:", round(cost, 2))
+15. Perfect Number:
+Question: Write a function to determine whether a given natural number is a perfect number. A natural number is said to be a perfect number if it is the sum of its divisors.
+Answer:
+python
+Copy code
+number = int(input("Enter a number: "))
+divisors_sum = sum(i for i in range(1, number) if number % i == 0)
+
+if divisors_sum == number:
+    print("Perfect number")
+else:
+    print("Not a perfect number")
+16. Sum of Series:
+Question: Write a function that finds the sum of the n terms of the following series:
+
+Answer:
+python
+
+
+
+Copy code
+
+
+
+
+from math import factorial
+
+# a) Series 1
+x = int(input("Enter value of x: "))
+n = int(input("Enter number of terms: "))
+sum_series_a = 0
+for i in range(n):
+    term = (x ** (2 * i)) / factorial(2 * i)
+    if i % 2 == 0:
+        sum_series_a += term
+    else:
+        sum_series_a -= term
+print("Sum of Series a:", sum_series_a)
+
+# b) Series 2
+sum_series_b = sum((x ** i) / factorial(i) for i in range(n))
+print("Sum of Series b:", sum_series_b)
+
+# c) Series 3
+sum_series_c = sum((-1)**(i//2) * (2 * i + 1) for i in range(n))
+print("Sum of Series c:", sum_series_c)
+17. Numbers Divisible by 5 or 6:
+Question: Write a python program that displays all the numbers from 100 to 1,000, ten per line, that are divisible by 5 or 6.
+Answer:
+python
+
+
+
+Copy code
+
+
+
+
+count = 0
+for i in range(100, 1001):
+    if i % 5 == 0 or i % 6 == 0:
+        print(i, end=" ")
+        count += 1
+        if count % 10 == 0:
+            print()
+18. Numbers Except Multiples of 7:
+Question: Write a python program that prints all numbers from 1 to 100, except multiples of 7, using a for loop with continue.
+Answer:
+python
+
+
+
+Copy code
+
+
+
+
+for i in range(1, 101):
+    if i % 7 == 0:
+        continue
+    print(i, end=" ")
+19. Reverse the Digits of a Number:
+Question: Write a python program that accepts a positive integer n and reverses the order of its digits, e.g., 1234 becomes 4321.
+Answer:
+python
+
+
+
+Copy code
+
+
+
+
+number = input("Enter a number: ")
+print("Reversed number:", number[::-1])
+20. Smallest Factors of a Number:
+Question: Write a python program that reads an integer and displays all its smallest factors in increasing order, e.g., if the input integer is 120, the output should be 2, 2, 2, 3, 5.
+Answer:
+python
+
+
+
+Copy code
+
+
+
+
+number = int(input("Enter a number: "))
+factor = 2
+while number > 1:
+    while number % factor == 0:
+        print(factor, end=" ")
+        number //= factor
+    factor += 1
+21. Factorial Number:
+Question: Write a python program to determine whether or not a number n is a factorial number.
+Answer:
+python
+
+
+
+Copy code
+
+
+
+
+number = int(input("Enter a number: "))
+factorial = 1
+i = 1
+while factorial < number:
+    i += 1
+    factorial *= i
+if factorial == number:
+    print("Factorial number")
+else:
+    print("Not a factorial number")
+22. Sum of Digits Until Single Digit:
+Question: Write a program that takes a number from the user and continuously sums its digits until the sum becomes a single-digit number.
+Answer:
+python
+
+
+
+Copy code
+
+
+
+
+number = int(input("Enter a number: "))
+while number >= 10:
+    number = sum(int(digit) for digit in str(number))
+print("Single digit sum:", number)
+23. ATM Withdrawal System:
+Question: Write a program to simulate a simple ATM withdrawal system. The user can enter an amount they want to withdraw, and the program will provide the number of 100, 50, 20, and 10 denomination notes required to dispense that amount.
+Answer:
+python
+
+
+
+Copy code
+
+
+
+
+amount = int(input("Enter amount to withdraw: "))
+if amount % 10 != 0:
+    print("Amount must be a multiple of 10")
+else:
+    notes_100 = amount // 100
+    amount %= 100
+    notes_50 = amount // 50
+    amount %= 50
+    notes_20 = amount // 20
+    amount %= 20
+    notes_10 = amount // 10
+    print(f"100s: {notes_100}, 50s: {notes_50}, 20s: {notes_20}, 10s: {notes_10}")
+24. Check Digits in a Number:
+Question: Write a program that reads an integer from the user and checks which digits (0-9) have appeared in the number. The program should print out the digits that have appeared, e.g. input=1234, output=ONE TWO THREE FOUR.
+Answer:
+python
+
+
+
+Copy code
+
+
+
+
+number = input("Enter a number: ")
+digit_names = ["ZERO", "ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE"]
+for digit in number:
+    print(digit_names[int(digit)], end=" ")
+
+
+
+
+
+    1. Write a Python program to print the following pattern:
+markdown
+Copy code
+*
+**
+***
+****
+Answer:
+python
+Copy code
+for i in range(1, 5):
+    print("*" * i)
+2. Write a Python program to print the following pattern:
+markdown
+Copy code
+*
+**
+***
+****
+Answer:
+python
+Copy code
+for i in range(1, 5):
+    print("*" * i)
+3. Write a Python program to print the following pattern:
+markdown
+Copy code
+****
+***
+**
+*
+Answer:
+python
+Copy code
+for i in range(4, 0, -1):
+    print("*" * i)
+4. Write a Python program to print the following pattern:
+
+
+
+
+
+You said:
+write the quesrion also
+ChatGPT said:
+ChatGPT
+Here are the Python programs along with their respective questions:
+
+1. Question: Write a Python program to print the following pattern:
+markdown
+Copy code
+*
+**
+***
+****
+Answer:
+python
+Copy code
+for i in range(1, 5):
+    print("*" * i)
+2. Question: Write a Python program to print the following pattern:
+markdown
+Copy code
+*
+**
+***
+****
+Answer:
+python
+Copy code
+for i in range(1, 5):
+    print("*" * i)
+3. Question: Write a Python program to print the following pattern:
+markdown
+Copy code
+****
+***
+**
+*
+Answer:
+python
+Copy code
+for i in range(4, 0, -1):
+    print("*" * i)
+4. Question: Write a Python program to print the following pattern:
+markdown
+Copy code
+*
+**
+***
+****
+***
+**
+*
+Answer:
+python
+Copy code
+for i in range(4):
+    print("*" * (i + 1))
+for i in range(3, 0, -1):
+    print("*" * i)
+5. Question: Write a Python program to print the following pattern:
+markdown
+Copy code
+****
+ ***
+  **
+   *
+Answer:
+python
+Copy code
+for i in range(4, 0, -1):
+    print(" " * (4 - i) + "*" * i)
+6. Question: Write a Python program to print the following pattern:
+markdown
+Copy code
+*****
+ ****
+  ***
+   **
+    *
+Answer:
+python
+Copy code
+for i in range(5):
+    print(" " * i + "*" * (5 - i))
+7. Question: Write a Python program to print the following pattern:
+markdown
+Copy code
+*   *
+ * *
+  *
+Answer:
+python
+Copy code
+for i in range(5):
+    print(" " * i + "*" + " " * (4 - i) + "*")
+``
+
+
+
+
+
+
+
+
+8. Question: Write a Python program to print the following pattern:
+markdown
+Copy code
+* 
+* * 
+* * * 
+* * * * 
+* * * * * 
+Answer:
+python
+Copy code
+for i in range(5):
+    print("* " * (i + 1))
+9. Question: Write a Python program to print the following pattern:
+Copy code
+0 1 2 3 4 5
+0 1 2 3 4
+0 1 2 3
+0 1 2
+0 1
+0
+Answer:
+python
+Copy code
+for i in range(6):
+    print(" ".join(str(j) for j in range(6 - i)))
+
+
+
+10. Question: Write a Python program to print the following pattern:
+Copy code
+1
+333
+55555
+7777777
+999999999
+Answer:
+python
+Copy code
+for i in range(1, 10, 2):
+    print(str(i) * i)
+11. Question: Write a Python program to print the following pattern:
+Copy code
+1
+2 1
+3 2 1
+4 3 2 1
+5 4 3 2 1
+Answer:
+python
+Copy code
+for i in range(1, 6):
+    for j in range(i, 0, -1):
+        print(j, end=" ")
+    print()
+12. Question: Write a Python program to print the following pattern:
+Copy code
+1 2
+3 4 5
+6 7 8 9
+Answer:
+python
+Copy code
+count = 1
+for i in range(1, 5):
+    for j in range(i):
+        print(count, end=" ")
+        count += 1
+    print()
+13. Question: Write a Python program to print the following pattern:
+mathematica
+Copy code
+A
+B C
+D E F
+G H I J
+K L M N O
+P Q R S T U
+V W X Y Z [ \
+Answer:
+python
+Copy code
+alpha = ord('A')
+for i in range(6):
+    for j in range(i + 1):
+        print(chr(alpha), end=" ")
+        alpha += 1
+    print()
+14. Question: Write a Python program to print the following pattern:
+Copy code
+1
+2 1
+3 2 1
+4 3 2 1
+5 4 3 2 1
+Answer:
+python
+Copy code
+for i in range(1, 6):
+    for j in range(i, 0, -1):
+        print(j, end=" ")
+    print()
