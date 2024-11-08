@@ -1,0 +1,562 @@
+# 1. Find the first, second, and third greatest digit in a number
+def greatest_digits(number):
+    first, second, third = 0, 0, 0
+    for d in str(number):
+        digit = int(d)
+        if digit > first:
+            third = second
+            second = first
+            first = digit
+        elif digit > second:
+            third = second
+            second = digit
+        elif digit > third:
+            third = digit
+    return first, second, third
+
+# 2. Find numbers between 100 and 500 divisible by 3 and multiples of 5
+def find_divisibles():
+    n = 100
+    while n <= 500:
+        if n % 3 == 0 and n % 5 == 0:
+            print(n, end=" ")
+        n += 1
+
+# 3. Add squares of even numbers between 1 and 50
+def sum_even_squares():
+    total = 0
+    n = 2
+    while n <= 50:
+        total += n * n
+        n += 2
+    return total
+
+# 4. Reverse a string
+def reverse_string(s):
+    reversed_s = ''
+    for char in s:
+        reversed_s = char + reversed_s
+    return reversed_s
+
+# 5. Count the number of digits in a positive integer
+def count_digits(n):
+    count = 0
+    while n > 0:
+        n //= 10
+        count += 1
+    return count
+
+# 6. Check if a string is a palindrome
+def is_palindrome(s):
+    i, j = 0, len(s) - 1
+    while i < j:
+        if s[i] != s[j]:
+            return False
+        i += 1
+        j -= 1
+    return True
+
+# 7. Check if an alphabet is a vowel or consonant
+def is_vowel(ch):
+    vowels = 'aeiouAEIOU'
+    return ch in vowels
+
+# 8. Days in a month
+def days_in_month(month):
+    if month.lower() in ["january", "march", "may", "july", "august", "october", "december"]:
+        return 31
+    elif month.lower() in ["april", "june", "september", "november"]:
+        return 30
+    elif month.lower() == "february":
+        return "28/29"
+    else:
+        return "Invalid month"
+
+# 9. Convert binary to decimal and vice versa
+def binary_to_decimal(binary):
+    decimal = 0
+    for digit in binary:
+        decimal = decimal * 2 + int(digit)
+    return decimal
+
+def decimal_to_binary(decimal):
+    binary = ""
+    while decimal > 0:
+        binary = str(decimal % 2) + binary
+        decimal //= 2
+    return binary
+
+# 10. Unique permutations of a string
+def unique_permutations(s):
+    def permute(prefix, remaining):
+        if not remaining:
+            print(prefix)
+        else:
+            seen = set()
+            for i in range(len(remaining)):
+                if remaining[i] not in seen:
+                    seen.add(remaining[i])
+                    permute(prefix + remaining[i], remaining[:i] + remaining[i+1:])
+    permute("", s)
+
+# 11. Check if a string can form a palindrome
+def can_form_palindrome(s):
+    odd_count = 0
+    for char in set(s):
+        if s.count(char) % 2 != 0:
+            odd_count += 1
+    return odd_count <= 1
+
+# 12. Calculate new date after certain days
+from datetime import datetime, timedelta
+def calculate_new_date(today, day_of_week, days):
+    date = datetime.strptime(today, '%Y-%m-%d')
+    new_date = date + timedelta(days=days)
+    days_of_week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    new_day_of_week = days_of_week[(days_of_week.index(day_of_week) + days) % 7]
+    return new_date.strftime('%Y-%m-%d'), new_day_of_week
+
+# 13. Convert Roman numeral to integer
+def roman_to_integer(roman):
+    roman_numerals = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    total, prev = 0, 0
+    for char in roman[::-1]:
+        current = roman_numerals[char]
+        total += current if current >= prev else -current
+        prev = current
+    return total
+
+# 14. Check if a number is an Armstrong number
+def is_armstrong(n):
+    count = count_digits(n)
+    total, temp = 0, n
+    while temp > 0:
+        digit = temp % 10
+        total += digit ** count
+        temp //= 10
+    return total == n
+
+# 15. Return nth Fibonacci number
+def fibonacci(n):
+    a, b = 0, 1
+    for _ in range(n):
+        a, b = b, a + b
+    return a
+
+# 16. Basic calculator
+def calculator(a, b, operation):
+    if operation == 'add':
+        return a + b
+    elif operation == 'subtract':
+        return a - b
+    elif operation == 'multiply':
+        return a * b
+    elif operation == 'divide':
+        return a / b if b != 0 else "Cannot divide by zero"
+    return "Invalid operation"
+
+# 17. Remove vowels from a string
+def remove_vowels(s):
+    result = ""
+    for c in s:
+        if c.lower() not in 'aeiou':
+            result += c
+    return result
+
+# 18. Check if two strings are anagrams
+def is_anagram(s1, s2):
+    return sorted(s1) == sorted(s2)
+
+# 19. Find GCD of two numbers
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+# 20. Print all prime numbers between 1 and 100
+def primes_up_to_100():
+    n = 2
+    while n <= 100:
+        is_prime = True
+        for i in range(2, int(n ** 0.5) + 1):
+            if n % i == 0:
+                is_prime = False
+                break
+        if is_prime:
+            print(n, end=" ")
+        n += 1
+
+# 21. Calculate factorial of a number
+def factorial(n):
+    result, i = 1, 1
+    while i <= n:
+        result *= i
+        i += 1
+    return result
+
+# 22. First 10 terms of an arithmetic progression
+def arithmetic_progression(a, d):
+    n = 0
+    while n < 10:
+        print(a + n * d, end=" ")
+        n += 1
+
+# 23. Index of each vowel in a string
+def vowel_indices(s):
+    i = 0
+    while i < len(s):
+        if s[i].lower() in 'aeiou':
+            print(f"Index {i}: {s[i]}")
+        i += 1
+
+# 24. Remove punctuation from a string
+import string
+def remove_punctuation(s):
+    result = ""
+    for c in s:
+        if c not in string.punctuation:
+            result += c
+    return result
+
+# 25. Check if two numbers are coprime
+def are_coprime(a, b):
+    return gcd(a, b) == 1
+
+# Example for coprime function:
+# print(are_coprime(8, 15))  # Output: True
+# print(are_coprime(12, 18)) # Output: False
+
+# 26. Replace vowels in a string with '*'
+def replace_vowels(s):
+    result = ""
+    for c in s:
+        if c.lower() in 'aeiou':
+            result += '*'
+        else:
+            result += c
+    return result
+
+# 27. Convert digits of a number to text
+digit_map = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+def digits_to_text(n):
+    text = ""
+    for d in str(n):
+        text += digit_map[int(d)] + " "
+    return text.strip()
+
+# 28. Shift each letter in a string by one
+def shift_string(s):
+    result = ""
+    for c in s:
+        if 'a' <= c <= 'z':
+            shifted = chr(((ord(c) - 96) % 26) + 97)
+            result += shifted
+        else:
+            result += c
+    return result
+
+# 29. Check if a number is a perfect number
+def is_perfect(n):
+    total, i = 0, 1
+    while i < n:
+        if n % i == 0:
+            total += i
+        i += 1
+    return total == n
+
+# 30. Return the product of digits of a number
+def product_of_digits(n):
+    product = 1
+    while n > 0:
+        product *= n % 10
+
+
+
+
+
+You said:
+please write complete code with main function which can give a output
+ChatGPT said:
+ChatGPT
+Here's the complete code with a main function that calls each of the functions from the 30 problems in sequence, printing out their results. The main function is structured so that each problem's function is executed and its output is displayed for clarity.
+
+python
+Copy code
+from datetime import datetime, timedelta
+import string
+
+# 1. Find the first, second, and third greatest digit in a number
+def greatest_digits(number):
+    first, second, third = 0, 0, 0
+    for d in str(number):
+        digit = int(d)
+        if digit > first:
+            third = second
+            second = first
+            first = digit
+        elif digit > second:
+            third = second
+            second = digit
+        elif digit > third:
+            third = digit
+    return first, second, third
+
+# 2. Find numbers between 100 and 500 divisible by 3 and multiples of 5
+def find_divisibles():
+    result = ""
+    n = 100
+    while n <= 500:
+        if n % 3 == 0 and n % 5 == 0:
+            result += f"{n} "
+        n += 1
+    return result
+
+# 3. Add squares of even numbers between 1 and 50
+def sum_even_squares():
+    total = 0
+    n = 2
+    while n <= 50:
+        total += n * n
+        n += 2
+    return total
+
+# 4. Reverse a string
+def reverse_string(s):
+    reversed_s = ''
+    for char in s:
+        reversed_s = char + reversed_s
+    return reversed_s
+
+# 5. Count the number of digits in a positive integer
+def count_digits(n):
+    count = 0
+    while n > 0:
+        n //= 10
+        count += 1
+    return count
+
+# 6. Check if a string is a palindrome
+def is_palindrome(s):
+    i, j = 0, len(s) - 1
+    while i < j:
+        if s[i] != s[j]:
+            return False
+        i += 1
+        j -= 1
+    return True
+
+# 7. Check if an alphabet is a vowel or consonant
+def is_vowel(ch):
+    vowels = 'aeiouAEIOU'
+    return ch in vowels
+
+# 8. Days in a month
+def days_in_month(month):
+    if month.lower() in ["january", "march", "may", "july", "august", "october", "december"]:
+        return 31
+    elif month.lower() in ["april", "june", "september", "november"]:
+        return 30
+    elif month.lower() == "february":
+        return "28/29"
+    else:
+        return "Invalid month"
+
+# 9. Convert binary to decimal and vice versa
+def binary_to_decimal(binary):
+    decimal = 0
+    for digit in binary:
+        decimal = decimal * 2 + int(digit)
+    return decimal
+
+def decimal_to_binary(decimal):
+    binary = ""
+    while decimal > 0:
+        binary = str(decimal % 2) + binary
+        decimal //= 2
+    return binary
+
+# 10. Unique permutations of a string
+def unique_permutations(s):
+    def permute(prefix, remaining):
+        if not remaining:
+            print(prefix)
+        else:
+            seen = set()
+            for i in range(len(remaining)):
+                if remaining[i] not in seen:
+                    seen.add(remaining[i])
+                    permute(prefix + remaining[i], remaining[:i] + remaining[i+1:])
+    permute("", s)
+
+# 11. Check if a string can form a palindrome
+def can_form_palindrome(s):
+    odd_count = 0
+    for char in set(s):
+        if s.count(char) % 2 != 0:
+            odd_count += 1
+    return odd_count <= 1
+
+# 12. Calculate new date after certain days
+def calculate_new_date(today, day_of_week, days):
+    date = datetime.strptime(today, '%Y-%m-%d')
+    new_date = date + timedelta(days=days)
+    days_of_week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    new_day_of_week = days_of_week[(days_of_week.index(day_of_week) + days) % 7]
+    return new_date.strftime('%Y-%m-%d'), new_day_of_week
+
+# 13. Convert Roman numeral to integer
+def roman_to_integer(roman):
+    roman_numerals = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    total, prev = 0, 0
+    for char in roman[::-1]:
+        current = roman_numerals[char]
+        total += current if current >= prev else -current
+        prev = current
+    return total
+
+# 14. Check if a number is an Armstrong number
+def is_armstrong(n):
+    count = count_digits(n)
+    total, temp = 0, n
+    while temp > 0:
+        digit = temp % 10
+        total += digit ** count
+        temp //= 10
+    return total == n
+
+# 15. Return nth Fibonacci number
+def fibonacci(n):
+    a, b = 0, 1
+    for _ in range(n):
+        a, b = b, a + b
+    return a
+
+# 16. Basic calculator
+def calculator(a, b, operation):
+    if operation == 'add':
+        return a + b
+    elif operation == 'subtract':
+        return a - b
+    elif operation == 'multiply':
+        return a * b
+    elif operation == 'divide':
+        return a / b if b != 0 else "Cannot divide by zero"
+    return "Invalid operation"
+
+# 17. Remove vowels from a string
+def remove_vowels(s):
+    result = ""
+    for c in s:
+        if c.lower() not in 'aeiou':
+            result += c
+    return result
+
+# 18. Check if two strings are anagrams
+def is_anagram(s1, s2):
+    return sorted(s1) == sorted(s2)
+
+# 19. Find GCD of two numbers
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+# 20. Print all prime numbers between 1 and 100
+def primes_up_to_100():
+    result = ""
+    n = 2
+    while n <= 100:
+        is_prime = True
+        for i in range(2, int(n ** 0.5) + 1):
+            if n % i == 0:
+                is_prime = False
+                break
+        if is_prime:
+            result += f"{n} "
+        n += 1
+    return result
+
+# 21. Calculate factorial of a number
+def factorial(n):
+    result, i = 1, 1
+    while i <= n:
+        result *= i
+        i += 1
+    return result
+
+# 22. First 10 terms of an arithmetic progression
+def arithmetic_progression(a, d):
+    result = ""
+    n = 0
+    while n < 10:
+        result += f"{a + n * d} "
+        n += 1
+    return result
+
+# 23. Index of each vowel in a string
+def vowel_indices(s):
+    indices = ""
+    i = 0
+    while i < len(s):
+        if s[i].lower() in 'aeiou':
+            indices += f"Index {i}: {s[i]}\n"
+        i += 1
+    return indices
+
+# 24. Remove punctuation from a string
+def remove_punctuation(s):
+    result = ""
+    for c in s:
+        if c not in string.punctuation:
+            result += c
+    return result
+
+# 25. Check if two numbers are coprime
+def are_coprime(a, b):
+    return gcd(a, b) == 1
+
+# 26. Replace vowels in a string with '*'
+def replace_vowels(s):
+    result = ""
+    for c in s:
+        if c.lower() in 'aeiou':
+            result += '*'
+        else:
+            result += c
+    return result
+
+# 27. Convert digits of a number to text
+digit_map = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+def digits_to_text(n):
+    text = ""
+    for d in str(n):
+        text += digit_map[int(d)] + " "
+    return text.strip()
+
+# 28. Shift each letter in a string by one
+def shift_string(s):
+    result = ""
+    for c in s:
+        if 'a' <= c <= 'z':
+            shifted = chr(((ord(c) - 96) % 26) + 97)
+            result += shifted
+        else:
+            result += c
+    return result
+
+# 29. Check if a number is a perfect number
+def is_perfect(n):
+    total, i = 0, 1
+    while i < n:
+        if n % i == 0:
+            total += i
+        i += 1
+    return total == n
+
+# 30. Return the product of digits of a number
+def product_of_digits(n):
+    product = 1
+    while n > 0:
+        product *= n % 10
+        n //= 10
+    return product
